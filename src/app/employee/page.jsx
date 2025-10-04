@@ -25,6 +25,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+
 
 const EmployeeDashboard = () => {
   return (
@@ -53,14 +61,36 @@ const EmployeeDashboard = () => {
                 </DialogDescription>
               </DialogHeader>
 
-              <div className="flex flex-col gap-3">
-                <label className="text-sm font-medium">Note</label>
-                <Input placeholder="e.g. Business lunch at Taj Hotel" />
-                <label className="text-sm font-medium">Category</label>
-                <Input placeholder="e.g. Food / Travel / Stay" />
-                <label className="text-sm font-medium">Amount</label>
-                <Input placeholder="Enter amount" type="number" />
-              </div>
+             <div className="flex flex-col gap-3">
+  <label className="text-sm font-medium">Note</label>
+  <Input placeholder="e.g. Business lunch at Taj Hotel" />
+
+  <label className="text-sm font-medium">Category</label>
+  <Input placeholder="e.g. Food / Travel / Stay" />
+
+  <label className="text-sm font-medium">Amount</label>
+  <div className="flex items-center gap-2">
+    <Select>
+      <SelectTrigger className="w-[100px]">
+        <SelectValue placeholder="INR" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="INR">₹ INR</SelectItem>
+        <SelectItem value="USD">$ USD</SelectItem>
+        <SelectItem value="EUR">€ EUR</SelectItem>
+        <SelectItem value="GBP">£ GBP</SelectItem>
+        <SelectItem value="JPY">¥ JPY</SelectItem>
+      </SelectContent>
+    </Select>
+
+    <Input
+      placeholder="Enter amount"
+      type="number"
+      className="flex-1"
+    />
+  </div>
+</div>
+
 
               <DialogFooter className="mt-4 flex justify-end gap-2">
                 <DialogClose asChild>
